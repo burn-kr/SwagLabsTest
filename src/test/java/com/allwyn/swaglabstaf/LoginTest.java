@@ -14,6 +14,7 @@ import static com.allwyn.swaglabstaf.constant.TestGroup.LOGIN;
 import static com.allwyn.swaglabstaf.constant.UserName.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.assertj.core.api.Assertions.assertThat;
+import static com.allwyn.swaglabstaf.constant.UserName.STANDARD_USER;
 
 @Test(groups = {ALL, LOGIN}, testName = "Login Tests")
 public class LoginTest extends BaseTest {
