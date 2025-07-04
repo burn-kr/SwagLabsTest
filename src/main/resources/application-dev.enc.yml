@@ -1,0 +1,39 @@
+app:
+    url: https://www.saucedemo.com
+credentials:
+    users:
+        - login: standard_user
+          password: ENC[AES256_GCM,data:RjSnpGq37sb2WutD,iv:bikJst0JU4289XGSdTUJa7YIHJ/minJKE6gfIidii7w=,tag:piV4V2rsamhsIgmvBrQIXQ==,type:str]
+        - login: locked_out_user
+          password: ENC[AES256_GCM,data:Rn/TvLcwpmf0zb1K,iv:4OrU8I32/Mddiepi94FN7jUCNAfIKXTryma6AfsPBUo=,tag:msyR50VOtO2ipJyK6yPMUA==,type:str]
+        - login: problem_user
+          password: ENC[AES256_GCM,data:z9i7X5mPa6exuoDr,iv:jFHp1bGJzb1PHdko6vLPZ61sdoSvg9HhjsxVX4IUYWM=,tag:RwFkVKrID5f/uJPmvZS+Bw==,type:str]
+        - login: performance_glitch_user
+          password: ENC[AES256_GCM,data:r2VssIAVAptgdL8m,iv:xVt4vPAwSMWgpPn2cy3ElUXM3AN10hU5JFfLfXxe/3I=,tag:Kkk17ETUd1S26JFNPSHGjg==,type:str]
+        - login: error_user
+          password: ENC[AES256_GCM,data:5pt02gHrFlHoif2H,iv:IZeIRS0PK0W1LiyrQ5TXK/NHoIAapJoy5iZju+aUwBs=,tag:Bo3mjgtoG4ll/gFYEVlqKQ==,type:str]
+        - login: visual_user
+          password: ENC[AES256_GCM,data:9BRSZVNsOzaSpwE5,iv:F5ull890YCfzLXFR1JpDmCFb4dpRZvM62y3+LIg5V34=,tag:QVnKZnMk08FXH8c7ENmf6g==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2025-07-04T15:25:42Z"
+    mac: ENC[AES256_GCM,data:1OVjtrNhqUint2I4iY6LKKOJHnCImEOTn5hXxMpHsncZwwgOnMjLy2DpZf2Vryb8bWEC4edHMptacaOyhQBRUe5PHP49GQHEgduSkyCJ+9hkUWeSb4qIKPzY5PHivJrHSzu3A5xTrp8LDsS8FB8SHfBnoRN+KbZkBuDFiR3TSWY=,iv:CjHJriXK7YxHnI/uOURfwye4/6F8kATz1E84Wml6xBc=,tag:2j5w8Dr79+7Aolv6X/wfiw==,type:str]
+    pgp:
+        - created_at: "2025-07-04T15:25:42Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hIwDTTYW3bkIMZgBA/49Xl+ylZIFgaOSqGuTPjqu2oR3UkUb5OdL1Uyjf2u4yzbO
+            7E7PGOu+u2Is0d1JePMZL+79hA64tbDrXBSX7WplVluLXeGKWPJFCqH0SuuOMKUx
+            W2E7xp8ShQBkr1bsXYPWVFJWWR7kW1+4uUY+hKqO3mfGMD+BeTE8njrMLiwqbtJe
+            AWbiEVT+eNbW6Qwr4zgBrKCHvWOjNpojXjPPSB3qkfmMcf0DZEL7hk6F3UIjSpL4
+            /PjKgcWSRqO9gyXebNKiIxnqyZHIUQhPdGSSevE5OjUefkJV1ZxcljxUNXxWoA==
+            =w3f9
+            -----END PGP MESSAGE-----
+          fp: E75C08BEFBC8A358625C188A4DEF22A7A7AFFA12
+    encrypted_regex: ^(.*Password|password)$
+    version: 3.7.3

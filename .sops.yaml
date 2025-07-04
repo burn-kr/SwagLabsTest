@@ -1,0 +1,8 @@
+# creation rules are evaluated sequentially, the first match wins
+creation_rules:
+  - file_regex: ^(application-.*\.yml)$
+    encrypted_regex: ^(.*Password|password)$
+    key_groups:
+      - pgp:
+          # Roman
+          - E75C08BEFBC8A358625C188A4DEF22A7A7AFFA12

@@ -1,5 +1,6 @@
 package com.allwyn.swaglabstaf.ui.page;
 
+import com.allwyn.swaglabstaf.config.env.User;
 import com.allwyn.swaglabstaf.ui.component.Button;
 import com.allwyn.swaglabstaf.ui.component.Input;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,10 @@ public class LoginPage extends BasePage {
         usernameInput = new Input("Username", By.id(USERNAME_INPUT_ID));
         passordInput = new Input("Password", By.id(PASSWORD_INPUT_ID));
         loginButton = new Button("Login", By.id(LOGIN_BUTTON_ID));
+    }
+
+    public void login(User user) {
+        login(user.getLogin(), user.getPassword());
     }
 
     public void login(String username, String password) {

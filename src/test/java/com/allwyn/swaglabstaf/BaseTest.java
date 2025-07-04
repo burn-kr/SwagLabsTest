@@ -1,5 +1,6 @@
 package com.allwyn.swaglabstaf;
 
+import com.allwyn.swaglabstaf.config.env.Credentials;
 import com.allwyn.swaglabstaf.config.env.CustomProvider;
 import com.allwyn.swaglabstaf.config.env.Timeout;
 import com.allwyn.swaglabstaf.config.listener.TestNGExecutionListener;
@@ -23,6 +24,9 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private Timeout timeout;
+
+    @Autowired
+    protected Credentials credentials;
 
     @BeforeClass
     public void setUp() {
