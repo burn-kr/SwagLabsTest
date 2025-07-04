@@ -7,7 +7,6 @@ import com.allwyn.swaglabstaf.ui.component.pageControl.Input;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Slf4j
