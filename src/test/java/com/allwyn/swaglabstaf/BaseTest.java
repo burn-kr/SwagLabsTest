@@ -2,6 +2,7 @@ package com.allwyn.swaglabstaf;
 
 import com.allwyn.swaglabstaf.config.env.CustomProvider;
 import com.allwyn.swaglabstaf.config.env.Timeout;
+import com.allwyn.swaglabstaf.config.listener.TestNGExecutionListener;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -11,8 +12,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 
 @SpringBootTest
+@Listeners(TestNGExecutionListener.class)
 public class BaseTest extends AbstractTestNGSpringContextTests {
 
     @Value("${app.url}")

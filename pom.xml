@@ -143,6 +143,7 @@
 				<configuration>
 					<environmentVariables>
 						<PROFILE>${profile.default}</PROFILE>
+						<BROWSER_HEADLESS>true</BROWSER_HEADLESS>
 					</environmentVariables>
 					<argLine>
 						-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
