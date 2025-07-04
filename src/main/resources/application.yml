@@ -1,0 +1,17 @@
+spring:
+    application:
+        name: SwagLabsTest
+    profiles:
+        active: ${PROFILE}
+    main:
+        banner-mode: off
+        lazy-initialization: true
+
+app:
+    timeout:
+        implicit: 5
+        explicit: 20
+
+logging:
+    level:
+        com.allwyn: debug
