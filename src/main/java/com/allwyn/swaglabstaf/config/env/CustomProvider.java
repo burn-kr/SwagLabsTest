@@ -33,7 +33,7 @@ public class CustomProvider implements WebDriverProvider {
         chromePrefs.put("profile.default_content_settings.popups", 0);
         chromePrefs.put("download.default_directory", downloadFilepath);
 
-        log.info("Setting up the local Chrome driver");
+        log.debug("Setting up the local Chrome driver");
 
         WebDriverManager.chromedriver().capabilities(capabilities);
         WebDriverManager.chromedriver().setup();
@@ -70,7 +70,7 @@ public class CustomProvider implements WebDriverProvider {
             chromeDriver.manage().window().maximize();
         }
 
-        log.info("Local web driver was successfully set");
+        log.debug("Local web driver was successfully set");
         return chromeDriver;
     }
 }
