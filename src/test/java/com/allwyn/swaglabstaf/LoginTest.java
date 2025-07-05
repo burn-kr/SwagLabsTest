@@ -12,6 +12,8 @@ import static com.allwyn.swaglabstaf.constant.AssertionMessage.PAGE_URL_INCORREC
 import static com.allwyn.swaglabstaf.constant.TestGroup.ALL;
 import static com.allwyn.swaglabstaf.constant.TestGroup.LOGIN;
 import static com.allwyn.swaglabstaf.constant.UserName.*;
+import static com.allwyn.swaglabstaf.constant.UserName.LOCKED_OUT_USER;
+import static com.allwyn.swaglabstaf.constant.UserName.STANDARD_USER;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -52,8 +54,6 @@ public class LoginTest extends BaseTest {
 
         validateError(expectedErrorMessage);
     }
-
-
 
     @DataProvider
     public Object[][] invalidCredentialsProvider() {
