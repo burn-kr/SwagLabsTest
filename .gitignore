@@ -1,8 +1,12 @@
 allure-results
 target
+build
 .mvn
 
 .idea
 *.iws
 *.iml
 *.ipr
+
+src/main/resources/application-*.yml
+!src/main/resources/application-*.enc.yml
