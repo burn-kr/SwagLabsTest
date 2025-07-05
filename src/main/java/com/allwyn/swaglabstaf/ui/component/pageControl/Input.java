@@ -1,7 +1,9 @@
-package com.allwyn.swaglabstaf.ui.component;
+package com.allwyn.swaglabstaf.ui.component.pageControl;
 
+import com.allwyn.swaglabstaf.ui.component.BaseComponent;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import java.util.Objects;
 
@@ -21,7 +23,14 @@ public class Input extends BaseComponent {
     public void inputText(String text) {
         log.debug("Inputting text '{}' into {}", text, getAlias());
         element.should(exist).shouldBe(visible).shouldBe(interactable);
+        element.sendKeys(text);
+
+        // workaround for clearing the input value as in case of input type=password Keys.CONTROL + "a" don't work
+        // setting an empty value wit JS code doesn't work as well
         element.clear();
+        element.sendKeys(" ");
+        element.sendKeys(Keys.BACK_SPACE);
+
         element.sendKeys(text);
     }
 

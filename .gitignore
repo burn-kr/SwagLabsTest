@@ -1,5 +1,6 @@
 allure-results
 target
+build
 .mvn
 
 .idea
