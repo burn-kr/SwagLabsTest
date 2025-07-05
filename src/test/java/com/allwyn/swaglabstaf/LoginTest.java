@@ -55,11 +55,6 @@ public class LoginTest extends BaseTest {
         validateError(expectedErrorMessage);
     }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> bfc7988 (Added new pom + tests for invalid credentials)
     @DataProvider
     public Object[][] invalidCredentialsProvider() {
         return new Object[][] {
@@ -86,7 +81,6 @@ public class LoginTest extends BaseTest {
         validateError(expectedErrorMessage);
     }
 
-<<<<<<< HEAD
     @Test(description = "Login time Test")
     @Description("Verifies that the login operation takes no more that 5 seconds")
     public void loginTimeTest() {
@@ -108,8 +102,6 @@ public class LoginTest extends BaseTest {
                 .isLessThanOrEqualTo(expectedMaxLoginTime);
     }
 
-=======
->>>>>>> bfc7988 (Added new pom + tests for invalid credentials)
     private void validateError(String expectedErrorMessage) {
         assertThat(loginPage.getErrorMessageContainer().getErrorMessage())
                 .as(ERROR_MESSAGE_INCORRECT)
