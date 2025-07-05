@@ -20,6 +20,7 @@ public class Header extends BaseComponent {
     private final Button mainMenuButton;
 
     public Header(MainMenu mainMenu) {
+        name = "Header";
         element = $(byId(HEADER_ID));
 
         this.mainMenu = mainMenu;

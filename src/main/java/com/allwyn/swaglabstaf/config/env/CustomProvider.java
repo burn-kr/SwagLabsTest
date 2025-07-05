@@ -32,6 +32,7 @@ public class CustomProvider implements WebDriverProvider {
         Map<String, Object> chromePrefs = new HashMap<>();
         chromePrefs.put("profile.default_content_settings.popups", 0);
         chromePrefs.put("download.default_directory", downloadFilepath);
+        chromePrefs.put("profile.password_manager_leak_detection", false);
 
         log.debug("Setting up the local Chrome driver");
 
