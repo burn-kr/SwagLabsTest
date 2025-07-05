@@ -23,6 +23,7 @@ public class Input extends BaseComponent {
     public void inputText(String text) {
         log.debug("Inputting text '{}' into {}", text, getAlias());
         element.should(exist).shouldBe(visible).shouldBe(interactable);
+        element.sendKeys(text);
 
         // workaround for clearing the input value as in case of input type=password Keys.CONTROL + "a" don't work
         // setting an empty value wit JS code doesn't work as well
