@@ -49,8 +49,9 @@ public class MainMenu extends BaseComponent {
         logoutLink.click();
     }
 
-    public void clickResetLink() {
+    public MainMenu clickResetLink() {
         resetLink.click();
+        return this;
     }
 
     public List<String> getMenuItemsNames() {

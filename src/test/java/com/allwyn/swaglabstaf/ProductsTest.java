@@ -1,6 +1,7 @@
 package com.allwyn.swaglabstaf;
 
 import com.allwyn.swaglabstaf.constant.SortingSelectOption;
+import com.allwyn.swaglabstaf.ui.page.CartPage;
 import com.allwyn.swaglabstaf.ui.page.InventoryPage;
 import io.qameta.allure.Description;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class ProductsTest extends BaseTest {
 
     @Autowired
     private InventoryPage inventoryPage;
+
+    @Autowired
+    private CartPage cartPage;
 
     private Pattern forbiddenCombinationPattern;
 
@@ -125,6 +129,17 @@ public class ProductsTest extends BaseTest {
                     .as(BUTTON_TEXT_INCORRECT)
                     .isEqualTo(ADD_TO_CART.getText());
         });
+    }
+
+    @Test(description = "Cart page navigate Test")
+    @Description("Verifies that the cart icon click leads to the Cart page")
+    public void cartPageNavigateTest() {
+        inventoryPage
+                .getHeader()
+                .clickShoppingCartLink();
+
+        validatePageUrl(cartPage.getPageUrl());
+        validatePageTitle(cartPage.getPageTitle(), CART_PAGE_TITLE);
     }
 
     private void validateTexts(List<String> textsToValidate) {

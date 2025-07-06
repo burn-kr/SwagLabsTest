@@ -1,9 +1,11 @@
 package com.allwyn.swaglabstaf.ui.page;
 
 import com.allwyn.swaglabstaf.ui.component.module.CartItem;
+import com.allwyn.swaglabstaf.ui.component.module.Header;
 import com.allwyn.swaglabstaf.ui.component.module.InventoryItem;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Button;
 import com.codeborne.selenide.Condition;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -23,8 +25,12 @@ public class CartPage extends BasePage {
     private final Button checkoutButton;
     private final Button continueShoppingButton;
 
-    public CartPage() {
+    @Getter
+    private final Header header;
+
+    public CartPage(Header header) {
         pageUrl = "/cart.html";
+        this.header = header;
 
         checkoutButton = new Button("Checkout", byId(CHECKOUT_BUTTON_ID));
         continueShoppingButton = new Button("Continue shopping", byId(CONTINUE_SHOPPING_BUTTON_ID));

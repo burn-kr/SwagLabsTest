@@ -36,9 +36,7 @@ public class LoginTest extends BaseTest {
         loginPage.login(credentials.getUser(STANDARD_USER));
 
         validatePageUrl(inventoryPage.getPageUrl());
-        assertThat(inventoryPage.getPageTitle())
-                .as(PAGE_TITLE_INCORRECT)
-                .isEqualTo(PRODUCTS_PAGE_TITLE);
+        validatePageTitle(inventoryPage.getPageTitle(), PRODUCTS_PAGE_TITLE);
     }
 
     @Test(description = "Locked user Test")
@@ -47,7 +45,7 @@ public class LoginTest extends BaseTest {
         loginPage.login(credentials.getUser(LOCKED_OUT_USER));
 
         validatePageUrl(loginPage.getPageUrl());
-        validateError(USER_LOCKED_ERROR_MESSAGE);
+        validateError(loginPage.getErrorMessageContainer().getErrorMessage(), USER_LOCKED_ERROR_MESSAGE);
     }
 
     @DataProvider
@@ -66,7 +64,7 @@ public class LoginTest extends BaseTest {
         loginPage.login(userName, password);
 
         validatePageUrl(loginPage.getPageUrl());
-        validateError(expectedErrorMessage);
+        validateError(loginPage.getErrorMessageContainer().getErrorMessage(), expectedErrorMessage);
     }
 
     @Test(description = "Login time Test")
@@ -93,12 +91,6 @@ public class LoginTest extends BaseTest {
         inventoryPage.open();
 
         validatePageUrl(loginPage.getPageUrl());
-        validateError(AUTHENTICATION_ERROR_MESSAGE);
-    }
-
-    private void validateError(String expectedErrorMessage) {
-        assertThat(loginPage.getErrorMessageContainer().getErrorMessage())
-                .as(ERROR_MESSAGE_INCORRECT)
-                .isEqualTo(expectedErrorMessage);
+        validateError(loginPage.getErrorMessageContainer().getErrorMessage(), AUTHENTICATION_ERROR_MESSAGE);
     }
 }
