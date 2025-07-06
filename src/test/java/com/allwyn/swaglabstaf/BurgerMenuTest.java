@@ -3,6 +3,7 @@ package com.allwyn.swaglabstaf;
 import com.allwyn.swaglabstaf.ui.page.CartPage;
 import com.allwyn.swaglabstaf.ui.page.InventoryPage;
 import com.allwyn.swaglabstaf.ui.page.ProductPage;
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Description;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.BeforeMethod;
@@ -46,6 +47,7 @@ public class BurgerMenuTest extends BaseTest {
                 .getHeader()
                 .clickMainMenuButton()
                 .getMenuItemsNames();
+        mainMenu.clickCloseMenuButton();
 
         assertThat(actualMainMenuItems)
                 .as(ELEM_LIST_INCORRECT)
@@ -77,6 +79,7 @@ public class BurgerMenuTest extends BaseTest {
                 .clickAboutLink();
 
         validatePageUrl(ABOUT_URL);
+        Selenide.back();
     }
 
     @Test(description = "'Logout' menu item Test")
