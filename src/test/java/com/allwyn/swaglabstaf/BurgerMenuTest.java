@@ -106,7 +106,8 @@ public class BurgerMenuTest extends BaseTest {
         inventoryPage
                 .getHeader()
                 .clickMainMenuButton()
-                .clickResetLink();
+                .clickResetLink()
+                .clickCloseMenuButton();
         var cartBadgeValue = inventoryPage
                 .getHeader()
                 .getBadgeValue();

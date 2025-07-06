@@ -74,11 +74,7 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
 
     @AfterMethod
     public void logout() {
-        if (mainMenu.isDisplayed()) {
-            mainMenu
-                    .clickResetLink()
-                    .clickLogoutLink();
-        } else if (header.isDisplayed()) {
+        if (header.isDisplayed()) {
             header
                     .clickMainMenuButton()
                     .clickResetLink()

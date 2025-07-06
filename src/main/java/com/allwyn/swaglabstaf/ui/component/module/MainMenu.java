@@ -1,6 +1,7 @@
 package com.allwyn.swaglabstaf.ui.component.module;
 
 import com.allwyn.swaglabstaf.ui.component.BaseComponent;
+import com.allwyn.swaglabstaf.ui.component.pageControl.Button;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Link;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
@@ -29,11 +30,13 @@ public class MainMenu extends BaseComponent {
     private static final String ABOUT_LINK_ID = "about_sidebar_link";
     private static final String LOGOUT_LINK_ID = "logout_sidebar_link";
     private static final String RESET_LINK_ID = "reset_sidebar_link";
+    private static final String CLOSE_MENU_ID = "react-burger-cross-btn";
 
     private final Link allItemsLink;
     private final Link aboutLink;
     private final Link logoutLink;
     private final Link resetLink;
+    private final Button closeMenuButton;
 
     /**
      * Constructs a new {@link MainMenu} component.
@@ -47,6 +50,7 @@ public class MainMenu extends BaseComponent {
         aboutLink = new Link("About", byId(ABOUT_LINK_ID));
         logoutLink = new Link("Logout", byId(LOGOUT_LINK_ID));
         resetLink = new Link("Reset", byId(RESET_LINK_ID));
+        closeMenuButton = new Button("Close menu", byId(CLOSE_MENU_ID));
     }
 
     /**
@@ -86,6 +90,11 @@ public class MainMenu extends BaseComponent {
     public MainMenu clickResetLink() {
         resetLink.click();
         return this;
+    }
+
+    @Step("Click the close menu button")
+    public void clickCloseMenuButton() {
+        closeMenuButton.click();
     }
 
     /**
