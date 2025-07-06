@@ -86,23 +86,43 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
         }
     }
 
+    /**
+     * Validates that the current page URL matches the expected URL.
+     * If the URLs do not match, an assertion error is thrown with a descriptive message.
+     *
+     * @param expectedPageUrl The expected full URL of the page.
+     */
     protected void validatePageUrl(String expectedPageUrl) {
-        var pageUrl = url();
+        var pageUrl = url(); // Gets the current URL from Selenide WebDriver
 
         assertThat(pageUrl)
-                .as(PAGE_URL_INCORRECT)
+                .as(PAGE_URL_INCORRECT) // Uses a predefined assertion message constant
                 .isEqualTo(expectedPageUrl);
     }
 
+    /**
+     * Validates that the actual page title matches the expected title.
+     * If the titles do not match, an assertion error is thrown with a descriptive message.
+     *
+     * @param actualTitle The actual title retrieved from the page.
+     * @param expectedTitle The expected title that the page should have.
+     */
     protected void validatePageTitle(String actualTitle, String expectedTitle) {
         assertThat(actualTitle)
-                .as(PAGE_TITLE_INCORRECT)
+                .as(PAGE_TITLE_INCORRECT) // Uses a predefined assertion message constant
                 .isEqualTo(expectedTitle);
     }
 
+    /**
+     * Validates that an actual error message matches the expected error message.
+     * This is typically used to confirm correct error handling and message display.
+     *
+     * @param actualErrorMessage The actual error message text displayed on the UI.
+     * @param expectedErrorMessage The expected error message text.
+     */
     protected void validateError(String actualErrorMessage, String expectedErrorMessage) {
         assertThat(actualErrorMessage)
-                .as(ERROR_MESSAGE_INCORRECT)
+                .as(ERROR_MESSAGE_INCORRECT) // Uses a predefined assertion message constant
                 .isEqualTo(expectedErrorMessage);
     }
 }
