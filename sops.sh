@@ -76,7 +76,7 @@ if [ "$MODE" = "decrypt" ]; then
         file_decrypted="$file_basename.yml"
 
         echo "decrypting $file to $file_decrypted"
-        sops --decrypt --input-type yml "$file" > "$file_decrypted" 2> /dev/null
+        sops --decrypt --verbose --input-type yml "$file" > "$file_decrypted" 2> /dev/null
 
         if [ $? -ne 0 ]; then
             log "Could not decrypt file:$RESTORE $file" $RED
