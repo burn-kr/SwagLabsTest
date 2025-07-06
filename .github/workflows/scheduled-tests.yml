@@ -51,7 +51,7 @@ jobs:
       - name: Decrypt application*.yml
         env:
           SOPS_PGP_KEY: ${{ secrets.SOPS_PGP_KEY }}
-        run: ./sops/decrypt.sh
+        run: ./sops.sh d
 
       - name: Get Maven Cache Directory
         id: maven-cache-dir
