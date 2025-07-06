@@ -5,4 +5,4 @@ creation_rules:
     key_groups:
       - pgp:
           # Roman
-          - E75C08BEFBC8A358625C188A4DEF22A7A7AFFA12
+          - 4DEF22A7A7AFFA12
