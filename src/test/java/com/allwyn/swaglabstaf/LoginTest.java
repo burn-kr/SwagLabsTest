@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static com.allwyn.swaglabstaf.constant.AssertionMessage.ERROR_MESSAGE_INCORRECT;
-import static com.allwyn.swaglabstaf.constant.AssertionMessage.PAGE_URL_INCORRECT;
+import static com.allwyn.swaglabstaf.constant.AssertionMessage.*;
 import static com.allwyn.swaglabstaf.constant.TestGroup.ALL;
 import static com.allwyn.swaglabstaf.constant.TestGroup.LOGIN;
 import static com.allwyn.swaglabstaf.constant.UserName.*;
@@ -20,10 +19,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Test(groups = {ALL, LOGIN}, testName = "Login Tests")
 public class LoginTest extends BaseTest {
 
+    private static final String EXPECTED_PAGE_TITLE = "Products";
     private static final String LOGIN_TIME_TOO_BIG = "Login time (ms) was bigger than expected";
-
-    @Autowired
-    private LoginPage loginPage;
 
     @Autowired
     private InventoryPage inventoryPage;
@@ -33,11 +30,10 @@ public class LoginTest extends BaseTest {
     public void successfulLoginTest() {
         loginPage.login(credentials.getUser(STANDARD_USER));
 
-        var pageUrl = url();
-
-        assertThat(pageUrl)
-                .as(PAGE_URL_INCORRECT)
-                .isEqualTo(inventoryPage.getPageUrl());
+        validatePageUrl(inventoryPage.getPageUrl());
+        assertThat(inventoryPage.getPageTitle())
+                .as(PAGE_TITLE_INCORRECT)
+                .isEqualTo(EXPECTED_PAGE_TITLE);
     }
 
     @Test(description = "Locked user Test")
@@ -46,12 +42,7 @@ public class LoginTest extends BaseTest {
         var expectedErrorMessage = "Epic sadface: Sorry, this user has been locked out.";
         loginPage.login(credentials.getUser(LOCKED_OUT_USER));
 
-        var pageUrl = url();
-
-        assertThat(pageUrl)
-                .as(PAGE_URL_INCORRECT)
-                .isEqualTo(loginPage.getPageUrl());
-
+        validatePageUrl(loginPage.getPageUrl());
         validateError(expectedErrorMessage);
     }
 
@@ -72,12 +63,7 @@ public class LoginTest extends BaseTest {
     public void invalidCredentialsTest(String userName, String password, String expectedErrorMessage) {
         loginPage.login(userName, password);
 
-        var pageUrl = url();
-
-        assertThat(pageUrl)
-                .as(PAGE_URL_INCORRECT)
-                .isEqualTo(loginPage.getPageUrl());
-
+        validatePageUrl(loginPage.getPageUrl());
         validateError(expectedErrorMessage);
     }
 
@@ -92,14 +78,29 @@ public class LoginTest extends BaseTest {
         var endTime = System.currentTimeMillis();
 
         var loginDuration = endTime - startTime;
+
+        validatePageUrl(inventoryPage.getPageUrl());
+        assertThat(loginDuration)
+                .as(LOGIN_TIME_TOO_BIG)
+                .isLessThanOrEqualTo(expectedMaxLoginTime);
+    }
+
+    @Test(description = "Unauthenticated access Test")
+    @Description("Verifies that a not authenticated user cannot access the application")
+    public void unauthenticatedAccessTest() {
+        var expectedErrorMessage = "Epic sadface: You can only access '/inventory.html' when you are logged in.";
+        inventoryPage.open();
+
+        validatePageUrl(loginPage.getPageUrl());
+        validateError(expectedErrorMessage);
+    }
+
+    private void validatePageUrl(String expectedPageUrl) {
         var pageUrl = url();
 
         assertThat(pageUrl)
                 .as(PAGE_URL_INCORRECT)
-                .isEqualTo(inventoryPage.getPageUrl());
-        assertThat(loginDuration)
-                .as(LOGIN_TIME_TOO_BIG)
-                .isLessThanOrEqualTo(expectedMaxLoginTime);
+                .isEqualTo(expectedPageUrl);
     }
 
     private void validateError(String expectedErrorMessage) {

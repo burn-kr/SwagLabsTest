@@ -5,7 +5,7 @@ import com.allwyn.swaglabstaf.config.env.CustomProvider;
 import com.allwyn.swaglabstaf.config.env.Timeout;
 import com.allwyn.swaglabstaf.config.listener.TestNGExecutionListener;
 import com.allwyn.swaglabstaf.ui.component.module.Header;
-import com.allwyn.swaglabstaf.ui.component.module.MainMenu;
+import com.allwyn.swaglabstaf.ui.page.LoginPage;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -33,6 +33,9 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private Header header;
+
+    @Autowired
+    protected LoginPage loginPage;
 
     @BeforeClass
     public void setUp() {
