@@ -10,6 +10,10 @@ import org.springframework.stereotype.Component;
 
 import static com.codeborne.selenide.Selectors.byId;
 
+/**
+ * Represents the "Checkout: Your Information" page, which is the first step in the checkout process.
+ * This page requires the user to enter their shipping information (first name, last name, and postal code).
+ */
 @Slf4j
 @Component
 public class CheckoutPage extends BasePage {
@@ -29,6 +33,13 @@ public class CheckoutPage extends BasePage {
     @Getter
     private final ErrorMessageContainer errorMessageContainer;
 
+    /**
+     * Constructs a new {@link CheckoutPage} instance.
+     * Sets the specific URL path for this checkout step and initializes
+     * input fields and action buttons, as well as the error message container.
+     *
+     * @param errorMessageContainer The {@link ErrorMessageContainer} component to display validation errors.
+     */
     public CheckoutPage(ErrorMessageContainer errorMessageContainer) {
         pageUrl = "/checkout-step-one.html";
         this.errorMessageContainer = errorMessageContainer;
@@ -40,29 +51,55 @@ public class CheckoutPage extends BasePage {
         cancelButton = new Button("Cancel", byId(CANCEL_BUTTON_ID));
     }
 
+    /**
+     * Enters the provided first name into the first name input field.
+     *
+     * @param firstName The first name to enter.
+     * @return The current {@link CheckoutPage} instance, allowing for method chaining.
+     */
     @Step("Enter user's first name: {0}")
     public CheckoutPage inputFirstName(String firstName) {
         firstNameInput.inputText(firstName);
         return this;
     }
 
+    /**
+     * Enters the provided last name into the last name input field.
+     *
+     * @param lastName The last name to enter.
+     * @return The current {@link CheckoutPage} instance, allowing for method chaining.
+     */
     @Step("Enter user's last name: {0}")
     public CheckoutPage inputFLastName(String lastName) {
         lastNameInput.inputText(lastName);
         return this;
     }
 
+    /**
+     * Enters the provided postal code into the postal code input field.
+     *
+     * @param postalCode The postal code to enter.
+     * @return The current {@link CheckoutPage} instance, allowing for method chaining.
+     */
     @Step("Enter user's postal code: {0}")
     public CheckoutPage inputPostalCode(String postalCode) {
         postalCodeInput.inputText(postalCode);
         return this;
     }
 
+    /**
+     * Clicks the "Cancel" button on the checkout information page.
+     * This action typically aborts the checkout process and might return the user to the cart page.
+     */
     @Step("Click the 'Cancel' button")
     public void clickCancelButton() {
         cancelButton.click();
     }
 
+    /**
+     * Clicks the "Continue" button on the checkout information page.
+     * This action typically proceeds to the next step of the checkout process (e.g., checkout overview).
+     */
     @Step("Click the 'Continue' button")
     public void clickContinueButton() {
         continueButton.click();

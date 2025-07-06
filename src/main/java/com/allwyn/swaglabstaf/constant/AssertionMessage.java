@@ -1,5 +1,10 @@
 package com.allwyn.swaglabstaf.constant;
 
+/**
+ * A utility class containing constant string messages used for assertions in tests.
+ * These messages provide descriptive feedback when an assertion fails, indicating
+ * what specific condition was not met, thereby aiding in debugging test failures.
+ */
 public class AssertionMessage {
 
     // page
