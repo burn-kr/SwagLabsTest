@@ -2,6 +2,7 @@ package com.allwyn.swaglabstaf.ui.page;
 
 import com.allwyn.swaglabstaf.ui.component.pageControl.Button;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Text;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -30,19 +31,23 @@ public class FinishPage extends BasePage {
         backHomeButton = new Button("Back home", byId(BACK_BUTTON_ID));
     }
 
+    @Step("Check if the success green mark is displayed")
     public boolean isGreenCheckmarkDisplayed() {
         log.info("Checking if the green checkmark is displayed");
         return $(byCssSelector(IMG_SUCCESS_CSS)).isDisplayed();
     }
 
+    @Step("Get the success message title")
     public String getMessageTitleText() {
         return messageTitleText.getText();
     }
 
+    @Step("Get the success message content")
     public String getMessageContentText() {
         return messageContentText.getText();
     }
 
+    @Step("Click the 'Back Home' button")
     public void clickBackHomeButton() {
         backHomeButton.click();
     }

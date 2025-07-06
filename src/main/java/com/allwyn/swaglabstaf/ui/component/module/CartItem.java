@@ -3,6 +3,7 @@ package com.allwyn.swaglabstaf.ui.component.module;
 import com.allwyn.swaglabstaf.ui.component.BaseComponent;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Button;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 
 import static com.codeborne.selenide.Selectors.byTagName;
@@ -21,6 +22,7 @@ public class CartItem extends BaseComponent {
         removeButton = new Button("Remove", element.$(byTagName(BUTTON_TAG)));
     }
 
+    @Step("Click Remove button")
     public void clickRemoveButton() {
         removeButton.click();
     }

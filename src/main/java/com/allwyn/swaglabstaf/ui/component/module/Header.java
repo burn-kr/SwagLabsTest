@@ -5,6 +5,7 @@ import com.allwyn.swaglabstaf.ui.component.BaseComponent;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Button;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Link;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Select;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -36,16 +37,19 @@ public class Header extends BaseComponent {
         shoppingCartLink = new Link("Shopping cart", byCssSelector(CART_LINK_CSS));
     }
 
+    @Step("Click main menu button")
     public MainMenu clickMainMenuButton() {
         mainMenuButton.click();
         return mainMenu;
     }
 
+    @Step("Select sorting order")
     public void selectSortingOrder(SortingSelectOption sortingSelectOption) {
         log.info("Sorting products by {}", sortingSelectOption.getName());
         sortingSelect.selectOption(sortingSelectOption.getName());
     }
 
+    @Step("Get badge value")
     public int getBadgeValue() {
         log.info("Getting the shopping cart badge value");
         var elem = $(byCssSelector(CART_BADGE_CSS));
@@ -59,6 +63,7 @@ public class Header extends BaseComponent {
         }
     }
 
+    @Step("Click the shopping cart link")
     public void clickShoppingCartLink() {
         shoppingCartLink.click();
     }

@@ -4,6 +4,7 @@ import com.allwyn.swaglabstaf.ui.component.BaseComponent;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Button;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Text;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 
 import static com.codeborne.selenide.Selectors.*;
@@ -28,26 +29,32 @@ public class InventoryItem extends BaseComponent {
         addRemoveButton = new Button("Add/Remove", element.$(byTagName(BUTTON_TAG)));
     }
 
+    @Step("Get price")
     public String getPrice() {
         return priceText.getText();
     }
 
+    @Step("Get name")
     public String getName() {
         return nameText.getText();
     }
 
+    @Step("Click 'Add to cart' button")
     public void clickAddToCartButton() {
         addRemoveButton.click();
     }
 
+    @Step("Click 'Remove' button")
     public void clickRemoveButton() {
         addRemoveButton.click();
     }
 
+    @Step("Get button text")
     public String getButtonText() {
         return addRemoveButton.getText();
     }
 
+    @Step("Click product")
     public void click() {
         nameText.click();
     }

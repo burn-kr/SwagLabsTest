@@ -1,9 +1,8 @@
 package com.allwyn.swaglabstaf.ui.page;
 
-import com.allwyn.swaglabstaf.ui.component.module.CartItem;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Button;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Text;
-import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -39,38 +38,36 @@ public class CheckoutOverviewPage extends BasePage {
         cancelButton = new Button("Cancel", byId(CANCEL_BUTTON_ID));
     }
 
+    @Step("Get the item total price value")
     public double getItemTotalPriceValue() {
         var itemTotalText = this.itemTotalPriceText.getText();
         return Double.parseDouble(itemTotalText.substring(itemTotalText.indexOf("$") + 1));
     }
 
+    @Step("Get the tax value")
     public double getTaxValue() {
         var taxText = this.taxText.getText();
         return Double.parseDouble(taxText.substring(taxText.indexOf("$") + 1));
     }
 
+    @Step("Get the total price value")
     public double getTotalPriceValue() {
         var totalPriceText = this.totalPriceText.getText();
         return Double.parseDouble(totalPriceText.substring(totalPriceText.indexOf("$") + 1));
     }
 
+    @Step("Click the 'Finish' button")
     public void clickFinishButton() {
         finishButton.click();
     }
 
+    @Step("Click the 'Cancel' button")
     public void clickCancelButton() {
         cancelButton.click();
     }
 
+    @Step("Get the checkout items' na,es")
     public List<String> getCheckoutItemsNames() {
         return $$(PRODUCT_NAME_CSS).texts();
-    }
-
-    public CartItem getCheckoutItemByName(String itemName) {
-        var elem = $$(PRODUCT_NAME_CSS)
-                .findBy(Condition.text(itemName))
-                .closest(CART_ITEM_CSS);
-
-        return new CartItem(itemName, elem);
     }
 }

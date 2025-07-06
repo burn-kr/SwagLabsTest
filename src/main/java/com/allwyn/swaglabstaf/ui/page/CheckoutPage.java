@@ -3,6 +3,7 @@ package com.allwyn.swaglabstaf.ui.page;
 import com.allwyn.swaglabstaf.ui.component.module.ErrorMessageContainer;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Button;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Input;
+import io.qameta.allure.Step;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -39,25 +40,30 @@ public class CheckoutPage extends BasePage {
         cancelButton = new Button("Cancel", byId(CANCEL_BUTTON_ID));
     }
 
+    @Step("Enter user's first name: {0}")
     public CheckoutPage inputFirstName(String firstName) {
         firstNameInput.inputText(firstName);
         return this;
     }
 
+    @Step("Enter user's last name: {0}")
     public CheckoutPage inputFLastName(String lastName) {
         lastNameInput.inputText(lastName);
         return this;
     }
 
+    @Step("Enter user's postal code: {0}")
     public CheckoutPage inputPostalCode(String postalCode) {
         postalCodeInput.inputText(postalCode);
         return this;
     }
 
+    @Step("Click the 'Cancel' button")
     public void clickCancelButton() {
         cancelButton.click();
     }
 
+    @Step("Click the 'Continue' button")
     public void clickContinueButton() {
         continueButton.click();
     }

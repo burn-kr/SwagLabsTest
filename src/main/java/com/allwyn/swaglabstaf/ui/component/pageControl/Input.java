@@ -1,6 +1,7 @@
 package com.allwyn.swaglabstaf.ui.component.pageControl;
 
 import com.allwyn.swaglabstaf.ui.component.BaseComponent;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -20,6 +21,7 @@ public class Input extends BaseComponent {
         this.element = $(locator);
     }
 
+    @Step("Input text '{0}' into Input element")
     public void inputText(String text) {
         log.debug("Inputting text '{}' into {}", text, getAlias());
         element.should(exist).shouldBe(visible).shouldBe(interactable);
@@ -33,10 +35,12 @@ public class Input extends BaseComponent {
         element.sendKeys(text);
     }
 
+    @Step("Check if input has the error mark")
     public boolean hasErrorMark() {
         return element.sibling(0).$(INPUT_ERROR_MARK_XPATH).isDisplayed();
     }
 
+    @Step("Check if the input has the red line underneath")
     public boolean hasRedErrorLine() {
         return Objects.requireNonNull(element.getAttribute("class")).contains(ERROR_CLASS_NAME);
     }

@@ -1,6 +1,7 @@
 package com.allwyn.swaglabstaf.ui.component.module;
 
 import com.allwyn.swaglabstaf.ui.component.BaseComponent;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,7 @@ public class ErrorMessageContainer extends BaseComponent {
         element = $(byXpath(SELF_XPATH));
     }
 
+    @Step("Get error message text")
     public String getErrorMessage() {
         return element.$(byXpath(ERROR_TEXT_XPATH)).getText();
     }

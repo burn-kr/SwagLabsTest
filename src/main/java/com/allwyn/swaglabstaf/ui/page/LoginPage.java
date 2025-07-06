@@ -4,6 +4,7 @@ import com.allwyn.swaglabstaf.config.env.User;
 import com.allwyn.swaglabstaf.ui.component.module.ErrorMessageContainer;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Button;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Input;
+import io.qameta.allure.Step;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
@@ -36,10 +37,12 @@ public class LoginPage extends BasePage {
         loginButton = new Button("Login", By.id(LOGIN_BUTTON_ID));
     }
 
+    @Step("Log in to the app")
     public void login(User user) {
         login(user.getLogin(), user.getPassword());
     }
 
+    @Step("Log in to the app as {0}")
     public void login(String username, String password) {
         log.info("Logging in as the {}", username);
         usernameInput.inputText(username);

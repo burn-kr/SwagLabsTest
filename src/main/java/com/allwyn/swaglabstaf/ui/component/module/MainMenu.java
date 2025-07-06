@@ -2,6 +2,7 @@ package com.allwyn.swaglabstaf.ui.component.module;
 
 import com.allwyn.swaglabstaf.ui.component.BaseComponent;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Link;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -37,23 +38,28 @@ public class MainMenu extends BaseComponent {
         resetLink = new Link("Reset", byId(RESET_LINK_ID));
     }
 
+    @Step("Click 'All Items' menu item")
     public void clickAllItemsLink() {
         allItemsLink.click();
     }
 
+    @Step("Click 'About' menu item")
     public void clickAboutLink() {
         aboutLink.click();
     }
 
+    @Step("Click 'Logout' menu item")
     public void clickLogoutLink() {
         logoutLink.click();
     }
 
+    @Step("Click 'Reset' menu item")
     public MainMenu clickResetLink() {
         resetLink.click();
         return this;
     }
 
+    @Step("Get all the menu items' names")
     public List<String> getMenuItemsNames() {
         return $$(ALL_MENU_ITEMS_CSS).texts();
     }

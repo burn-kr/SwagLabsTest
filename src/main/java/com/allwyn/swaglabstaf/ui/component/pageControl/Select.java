@@ -1,6 +1,7 @@
 package com.allwyn.swaglabstaf.ui.component.pageControl;
 
 import com.allwyn.swaglabstaf.ui.component.BaseComponent;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 
@@ -14,6 +15,7 @@ public class Select extends BaseComponent {
         this.element = $(locator);
     }
 
+    @Step("Select the '{0}' option from Select")
     public void selectOption(String optionName) {
         log.debug("Selecting by value '{}' from the '{}' select", optionName, name);
         element.click();
