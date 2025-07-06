@@ -17,4 +17,5 @@ public class AssertionMessage {
     public static final String BADGE_VALUE_INCORRECT = "The shopping cart badge value is not as expected";
     public static final String BUTTON_TEXT_INCORRECT = "The button text is not as expected";
     public static final String BUTTON_STATE_INCORRECT = "The enabled state of the button is incorrect";
+    public static final String TEXT_INCORRECT = "The text is not as expected";
 }
