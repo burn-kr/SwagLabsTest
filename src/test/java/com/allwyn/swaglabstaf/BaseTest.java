@@ -33,6 +33,7 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     protected static final String ONESIE_PRODUCT_NAME = "Sauce Labs Onesie";
     protected static final String PRODUCTS_PAGE_TITLE = "Products";
     protected static final String CART_PAGE_TITLE = "Your Cart";
+    protected static final String CHECKOUT_PAGE_TITLE = "Checkout: Your Information";
 
     @Value("${app.url}")
     private String pageUrl;
