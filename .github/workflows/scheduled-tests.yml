@@ -36,6 +36,23 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
+      - name: Install GnuPG
+        run: sudo apt-get update && sudo apt-get install -y gnupg
+
+      - name: Install SOPS
+        run: |
+          curl -LO https://github.com/getsops/sops/releases/download/v3.8.1/sops_3.8.1_amd64.deb 
+          sudo dpkg -i sops_3.8.1_amd64.deb
+          rm sops_3.8.1_amd64.deb
+      
+      - name: Make decrypt script executable
+        run: chmod +x sops/decrypt.sh
+
+      - name: Decrypt application*.yml
+        env:
+          SOPS_PGP_KEY: ${{ secrets.SOPS_PGP_KEY }}
+        run: ./sops/decrypt.sh
+
       - name: Get Maven Cache Directory
         id: maven-cache-dir
         run: echo "::set-output name=dir::$(mvn help:evaluate -Dexpression=settings.localRepository -q -DforceStdout)"
