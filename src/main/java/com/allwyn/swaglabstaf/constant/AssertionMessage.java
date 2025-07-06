@@ -8,4 +8,5 @@ public class AssertionMessage {
     public static final String BADGE_VALUE_INCORRECT = "The shopping cart badge value is not as expected";
     public static final String BUTTON_TEXT_INCORRECT = "The button text is not as expected";
     public static final String PAGE_TITLE_INCORRECT = "The page title is not as expected";
+    public static final String CART_ITEMS_NUMBER_INCORRECT = "The number of checkout cart items in no as expected";
 }
