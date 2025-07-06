@@ -34,7 +34,7 @@ public class CheckoutTest extends BaseTest {
     private CheckoutOverviewPage checkoutOverviewPage;
 
     @BeforeMethod
-    public void login() {
+    public void setUp() {
         loginPage.login(credentials.getUser(STANDARD_USER));
         inventoryPage
                 .getProductByName(BACKPACK_PRODUCT_NAME)

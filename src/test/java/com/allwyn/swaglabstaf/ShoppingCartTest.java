@@ -19,8 +19,6 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 @Test(groups = {ALL, CART}, testName = "Checkout cart Test")
 public class ShoppingCartTest extends BaseTest {
 
-    private static final String CHECKOUT_PAGE_TITLE = "Checkout: Your Information";
-
     @Autowired
     private InventoryPage inventoryPage;
 

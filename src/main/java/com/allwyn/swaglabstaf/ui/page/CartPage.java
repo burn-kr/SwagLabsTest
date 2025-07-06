@@ -18,7 +18,6 @@ import static com.codeborne.selenide.Selenide.$$;
 @Component
 public class CartPage extends BasePage {
 
-    private static final String CART_ITEM_CSS = ".cart_item";
     private static final String CHECKOUT_BUTTON_ID = "checkout";
     private static final String CONTINUE_SHOPPING_BUTTON_ID = "continue-shopping";
 
