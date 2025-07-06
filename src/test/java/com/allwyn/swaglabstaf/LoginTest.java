@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static com.allwyn.swaglabstaf.constant.AssertionMessage.*;
 import static com.allwyn.swaglabstaf.constant.TestGroup.ALL;
 import static com.allwyn.swaglabstaf.constant.TestGroup.LOGIN;
 import static com.allwyn.swaglabstaf.constant.UserName.*;

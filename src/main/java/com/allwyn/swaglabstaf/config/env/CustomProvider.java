@@ -17,9 +17,27 @@ import java.util.Optional;
 
 import static com.allwyn.swaglabstaf.constant.AppConstant.*;
 
+/**
+ * A custom implementation of {@link WebDriverProvider} for creating and configuring
+ * Chrome WebDriver instances. This provider supports various configurations such as
+ * headless mode, secondary screen positioning, and custom user data directories,
+ * primarily driven by environment variables.
+ */
 @Slf4j
 public class CustomProvider implements WebDriverProvider {
 
+    /**
+     * Creates and configures a {@link WebDriver} instance, specifically a Chrome driver,
+     * based on the provided capabilities and various environment variables.
+     * The method sets up headless mode, window size/position, download preferences,
+     * and user data directory based on system configurations.
+     *
+     * @param capabilities Desired capabilities for the WebDriver, which will be applied
+     * during the driver setup.
+     * @return A fully configured {@link ChromeDriver} instance ready for browser automation.
+     * @throws RuntimeException if any essential configuration or driver setup fails (e.g.,
+     * problems with WebDriverManager or invalid environment variable values).
+     */
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {

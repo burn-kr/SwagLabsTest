@@ -3,6 +3,11 @@ package com.allwyn.swaglabstaf.constant;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * An enumeration representing different types of predefined usernames for testing purposes,
+ * particularly in scenarios where different user behaviors or states need to be simulated.
+ * Each enum constant holds the actual string value of the username.
+ */
 @Getter
 @RequiredArgsConstructor
 public enum UserName {
