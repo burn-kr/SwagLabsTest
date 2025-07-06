@@ -6,7 +6,6 @@ import com.allwyn.swaglabstaf.ui.component.pageControl.Button;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Link;
 import com.allwyn.swaglabstaf.ui.component.pageControl.Select;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.NoSuchElementException;
 import org.springframework.stereotype.Component;
 
 import static com.codeborne.selenide.Selectors.*;
@@ -58,5 +57,9 @@ public class Header extends BaseComponent {
             log.debug("The shopping cart badge either does not exist or is not displayed");
             return 0;
         }
+    }
+
+    public void clickShoppingCartLink() {
+        shoppingCartLink.click();
     }
 }

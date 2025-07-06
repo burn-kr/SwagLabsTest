@@ -47,4 +47,8 @@ public class InventoryItem extends BaseComponent {
     public String getButtonText() {
         return addRemoveButton.getText();
     }
+
+    public void click() {
+        nameText.click();
+    }
 }
