@@ -65,9 +65,7 @@ public class BurgerMenuTest extends BaseTest {
                 .clickAllItemsLink();
 
         validatePageUrl(inventoryPage.getPageUrl());
-        assertThat(inventoryPage.getPageTitle())
-                .as(PAGE_TITLE_INCORRECT)
-                .isEqualTo(PRODUCTS_PAGE_TITLE);
+        validatePageTitle(inventoryPage.getPageTitle(), PRODUCTS_PAGE_TITLE);
     }
 
     @Test(description = "'About' menu item Test")

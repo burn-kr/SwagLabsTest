@@ -1,6 +1,7 @@
 package com.allwyn.swaglabstaf;
 
 import com.allwyn.swaglabstaf.ui.page.CartPage;
+import com.allwyn.swaglabstaf.ui.page.CheckoutPage;
 import com.allwyn.swaglabstaf.ui.page.InventoryPage;
 import io.qameta.allure.Description;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 @Test(groups = {ALL, CART}, testName = "Checkout cart Test")
-public class CheckoutCartTest extends BaseTest {
+public class ShoppingCartTest extends BaseTest {
 
-    private static final String CART_PAGE_TITLE = "Your Cart";
+    private static final String CHECKOUT_PAGE_TITLE = "Checkout: Your Information";
 
     @Autowired
     private InventoryPage inventoryPage;
@@ -26,22 +27,12 @@ public class CheckoutCartTest extends BaseTest {
     @Autowired
     private CartPage cartPage;
 
+    @Autowired
+    private CheckoutPage checkoutPage;
+
     @BeforeMethod
     public void login() {
         loginPage.login(credentials.getUser(STANDARD_USER));
-    }
-
-    @Test(description = "Cart page navigate Test")
-    @Description("Verifies that the cart icon click leads to the Cart page")
-    public void cartPageNavigateTest() {
-        inventoryPage
-                .getHeader()
-                .clickShoppingCartLink();
-
-        validatePageUrl(cartPage.getPageUrl());
-        assertThat(cartPage.getPageTitle())
-                .as(PAGE_TITLE_INCORRECT)
-                .isEqualTo(CART_PAGE_TITLE);
     }
 
     @Test(description = "Add to cart Test")
@@ -110,6 +101,21 @@ public class CheckoutCartTest extends BaseTest {
         assertThat(checkoutButtonState)
                 .as(BUTTON_STATE_INCORRECT)
                 .isFalse();
+    }
+
+    @Test(description = "Checkout button Test")
+    @Description("Verifies that the Checkout button click leads to the Checkout page")
+    public void checkoutButtonTest() {
+        inventoryPage
+                .getProductByName(BACKPACK_PRODUCT_NAME)
+                .clickAddToCartButton();
+        inventoryPage
+                .getHeader()
+                .clickShoppingCartLink();
+        cartPage.clickCheckoutButton();
+
+        validatePageUrl(checkoutPage.getPageUrl());
+        validatePageTitle(checkoutPage.getPageTitle(), CHECKOUT_PAGE_TITLE);
     }
 
     @Test(description = "'Continue shopping' button test")

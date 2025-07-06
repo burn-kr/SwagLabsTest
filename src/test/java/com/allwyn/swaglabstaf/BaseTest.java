@@ -10,6 +10,7 @@ import com.allwyn.swaglabstaf.ui.page.LoginPage;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.github.javafaker.Faker;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,8 +21,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
-import static com.allwyn.swaglabstaf.constant.AssertionMessage.PAGE_TITLE_INCORRECT;
-import static com.allwyn.swaglabstaf.constant.AssertionMessage.PAGE_URL_INCORRECT;
+import static com.allwyn.swaglabstaf.constant.AssertionMessage.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,6 +32,7 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     protected static final String BACKPACK_PRODUCT_NAME = "Sauce Labs Backpack";
     protected static final String ONESIE_PRODUCT_NAME = "Sauce Labs Onesie";
     protected static final String PRODUCTS_PAGE_TITLE = "Products";
+    protected static final String CART_PAGE_TITLE = "Your Cart";
 
     @Value("${app.url}")
     private String pageUrl;
@@ -41,6 +42,9 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     protected Credentials credentials;
+
+    @Autowired
+    protected Faker faker;
 
     @Autowired
     private Header header;
@@ -70,9 +74,13 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     @AfterMethod
     public void logout() {
         if (mainMenu.isDisplayed()) {
-            mainMenu.clickLogoutLink();
+            mainMenu
+                    .clickResetLink()
+                    .clickLogoutLink();
         } else if (header.isDisplayed()) {
-            header.clickMainMenuButton()
+            header
+                    .clickMainMenuButton()
+                    .clickResetLink()
                     .clickLogoutLink();
         }
     }
@@ -83,5 +91,17 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
         assertThat(pageUrl)
                 .as(PAGE_URL_INCORRECT)
                 .isEqualTo(expectedPageUrl);
+    }
+
+    protected void validatePageTitle(String actualTitle, String expectedTitle) {
+        assertThat(actualTitle)
+                .as(PAGE_TITLE_INCORRECT)
+                .isEqualTo(expectedTitle);
+    }
+
+    protected void validateError(String actualErrorMessage, String expectedErrorMessage) {
+        assertThat(actualErrorMessage)
+                .as(ERROR_MESSAGE_INCORRECT)
+                .isEqualTo(expectedErrorMessage);
     }
 }

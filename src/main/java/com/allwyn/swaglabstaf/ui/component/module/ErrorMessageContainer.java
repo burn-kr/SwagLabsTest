@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 @Component
 public class ErrorMessageContainer extends BaseComponent {
 
-    private static final String SELF_XPATH = "//div[contains(@class, 'error-message-container')]";
+    private static final String SELF_XPATH = "//div[@class = 'error-message-container error']";
     private static final String ERROR_TEXT_XPATH = ".//*[@data-test='error']";
 
     public ErrorMessageContainer() {
