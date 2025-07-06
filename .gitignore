@@ -2,6 +2,7 @@ allure-results
 target
 build
 .mvn
+.allure
 
 .idea
 *.iws
