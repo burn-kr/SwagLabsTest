@@ -56,7 +56,7 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     @Autowired
     protected LoginPage loginPage;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setUp() {
         Configuration.browser = CustomProvider.class.getName();
         Configuration.baseUrl = pageUrl;
@@ -67,7 +67,7 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void openHomePage() {
         Selenide.open("/");
     }
