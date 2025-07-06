@@ -100,7 +100,7 @@ public class CartPage extends BasePage {
      * This action typically navigates back to the product inventory page.
      */
     @Step("Click the 'Continue shopping' button")
-    public void voidclickContinueShoppingButton() {
+    public void clickContinueShoppingButton() {
         continueShoppingButton.click();
     }
 
