@@ -96,6 +96,7 @@ public class BurgerMenuTest extends BaseTest {
     @Test(description = "'Reset App State' menu item Test")
     @Description("Verifies that the 'Reset App State' menu item removes all the products from the cart")
     public void resetMenuItemTest() {
+        // 'Reset App State' should remove everything from the checkout
         var expectedNumberOfItemsToCheckout = 0;
 
         var backpackProduct = inventoryPage.getProductByName(BACKPACK_PRODUCT_NAME);

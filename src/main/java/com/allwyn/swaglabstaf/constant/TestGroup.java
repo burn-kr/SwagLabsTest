@@ -6,4 +6,5 @@ public class TestGroup {
     public static final String LOGIN = "Login";
     public static final String PRODUCTS = "Products";
     public static final String BURGER = "Burger";
+    public static final String CART = "Cart";
 }

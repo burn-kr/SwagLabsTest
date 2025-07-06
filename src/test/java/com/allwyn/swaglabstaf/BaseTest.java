@@ -20,6 +20,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
+import static com.allwyn.swaglabstaf.constant.AssertionMessage.PAGE_TITLE_INCORRECT;
 import static com.allwyn.swaglabstaf.constant.AssertionMessage.PAGE_URL_INCORRECT;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.assertj.core.api.Assertions.assertThat;
