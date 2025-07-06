@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import static com.allwyn.swaglabstaf.constant.AssertionMessage.*;
+import static com.allwyn.swaglabstaf.constant.ProductItemButtonText.ADD_TO_CART;
+import static com.allwyn.swaglabstaf.constant.ProductItemButtonText.REMOVE;
 import static com.allwyn.swaglabstaf.constant.SortingSelectOption.*;
 import static com.allwyn.swaglabstaf.constant.TestGroup.ALL;
 import static com.allwyn.swaglabstaf.constant.TestGroup.PRODUCTS;
@@ -24,11 +26,7 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 @Test(groups = {ALL, PRODUCTS}, testName = "Products Test")
 public class ProductsTest extends BaseTest {
 
-    private static final String BACKPACK_PRODUCT_NAME = "Sauce Labs Backpack";
-    private static final String ONESIE_PRODUCT_NAME = "Sauce Labs Onesie";
     private static final String INVALID_TEXT = "Text contains invalid characters";
-    private static final String EXPECTED_ADD_BUTTON_TEXT = "Add to cart";
-    private static final String EXPECTED_REMOVE_BUTTON_TEXT = "Remove";
 
     @Autowired
     private InventoryPage inventoryPage;
@@ -122,10 +120,10 @@ public class ProductsTest extends BaseTest {
         assertSoftly(softAssertions -> {
             softAssertions.assertThat(addedProductButtonText)
                     .as(BUTTON_TEXT_INCORRECT)
-                    .isEqualTo(EXPECTED_REMOVE_BUTTON_TEXT);
+                    .isEqualTo(REMOVE.getText());
             softAssertions.assertThat(removedProductButtonText)
                     .as(BUTTON_TEXT_INCORRECT)
-                    .isEqualTo(EXPECTED_ADD_BUTTON_TEXT);
+                    .isEqualTo(ADD_TO_CART.getText());
         });
     }
 
