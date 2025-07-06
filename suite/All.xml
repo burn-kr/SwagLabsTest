@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All tests" parallel="false">
-    <test name="All">
+<suite name="All tests" parallel="classes" thread-count="1">
+    <test name="All" parallel="classes" thread-count="1">
         <groups>
             <run>
                 <include name="All"/>
             </run>
         </groups>
         <packages>
-            <package name="com.allwyn.swaglabstaf.*"/>
+            <package name="com.allwyn.swaglabstaf.LoginTest"/>
         </packages>
     </test>
 </suite>

@@ -65,14 +65,10 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
         Configuration.timeout = timeout.implicitWait() * 1000;
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
-    }
-
-    @BeforeMethod(alwaysRun = true)
-    public void openHomePage() {
         Selenide.open("/");
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void logout() {
         if (header.isDisplayed()) {
             header

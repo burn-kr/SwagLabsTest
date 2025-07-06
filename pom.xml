@@ -151,7 +151,6 @@
 					<suiteXmlFiles>
 						<suiteXmlFile>${suite.default}</suiteXmlFile>
 					</suiteXmlFiles>
-					<parallel>none</parallel>
 				</configuration>
 			</plugin>
 			<plugin>
