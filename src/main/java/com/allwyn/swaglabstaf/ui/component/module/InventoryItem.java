@@ -17,8 +17,7 @@ public class InventoryItem extends BaseComponent {
 
     private final Text priceText;
     private final Text nameText;
-    private final Button addButton;
-    private final Button removeButton;
+    private final Button addRemoveButton;
 
     public InventoryItem(String name, SelenideElement element) {
         this.name = name;
@@ -26,8 +25,7 @@ public class InventoryItem extends BaseComponent {
 
         priceText = new Text("Price", element.$(byCssSelector(PRICE_CSS)));
         nameText = new Text("Product name", element.$(byCssSelector(NAME_CSS)));
-        addButton = new Button("Add to cart", element.$(byTagName(BUTTON_TAG)));
-        removeButton = new Button("Remove", element.$(byTagName(BUTTON_TAG)));
+        addRemoveButton = new Button("Add/Remove", element.$(byTagName(BUTTON_TAG)));
     }
 
     public String getPrice() {
@@ -39,10 +37,14 @@ public class InventoryItem extends BaseComponent {
     }
 
     public void clickAddToCartButton() {
-        addButton.click();
+        addRemoveButton.click();
     }
 
     public void clickRemoveButton() {
-        removeButton.click();
+        addRemoveButton.click();
+    }
+
+    public String getButtonText() {
+        return addRemoveButton.getText();
     }
 }
