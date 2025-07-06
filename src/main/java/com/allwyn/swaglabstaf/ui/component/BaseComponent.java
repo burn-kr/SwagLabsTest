@@ -34,4 +34,9 @@ public abstract class BaseComponent {
         log.info("Checking if {} is displayed", getAlias());
         return element.isDisplayed();
     }
+
+    public boolean isEnabled() {
+        log.info("Checking if {} is enabled", getAlias());
+        return !element.has(cssClass("disabled")) && element.isEnabled();
+    }
 }

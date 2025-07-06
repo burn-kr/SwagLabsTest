@@ -17,8 +17,7 @@ import static com.codeborne.selenide.Selenide.$$;
 @Component
 public class InventoryPage extends BasePage {
 
-    private static final String PAGE_TITLE_CSS = ".title";
-    private static final String PRODUCT_NAME_CSS = ".inventory_item_name";
+
     private static final String PRODUCT_CARD_CSS = ".inventory_item";
     private static final String PRODUCT_DESCRIPTION_CSS = ".inventory_item_desc";
     private static final String PRODUCT_PRICE_CSS = ".inventory_item_price";
@@ -34,11 +33,6 @@ public class InventoryPage extends BasePage {
     public void open() {
         log.info("Opening the Products page");
         Selenide.open(pageUrl);
-    }
-
-    public String getPageTitle() {
-        log.info("Getting the Products page title");
-        return $(PAGE_TITLE_CSS).getText();
     }
 
     public InventoryItem getProductByName(String itemName) {
