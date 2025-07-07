@@ -145,12 +145,24 @@
 						<PROFILE>${profile.default}</PROFILE>
 						<BROWSER_HEADLESS>true</BROWSER_HEADLESS>
 					</environmentVariables>
-					<argLine>
-						-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-					</argLine>
-					<suiteXmlFiles>
-						<suiteXmlFile>${suite.default}</suiteXmlFile>
-					</suiteXmlFiles>
+					<properties>
+				            <property>
+				                <name>testnames.output</name>
+				                <value>true</</value>
+				            </property>
+				            <property>
+				                <name>surefire.testng.debug</name>
+				                <value>true</value>
+				            </property>
+				        </properties>
+				        <systemPropertyVariables>
+				            <testng.verbose>10</testng.verbose> </systemPropertyVariables>
+				        <argLine>
+				            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+				            -Djava.awt.headless=true
+				            -Xmx1024m
+				            -Dfile.encoding=UTF-8
+				        </argLine>
 				</configuration>
 			</plugin>
 			<plugin>
