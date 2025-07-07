@@ -11,18 +11,19 @@ The tests are developed in Java using the Spring Boot framework, TestNG for test
 ## Table of contents
 
 1. [Features](#features)
-2. [Technologies Used](#technologies)
-3. [Getting Started](#gettingStarted)
+2. [Technologies Used](#technologies-used)
+3. [Getting Started](#getting-started)
    * [Prerequisites](#prerequisites)
    * [Installation](#installation)
-4. [Running Tests](#runningTests)
-   * [Local Run](*localRun)
-   * [CI/CD Run (GitHub Actions)](*cicd)
-5. [Allure Reports](#allure)
-   * [Local Generation](#localGeneration)
-   * [Viewing Report Locally](#viewLocally)
-   * [Viewing Online](#viewOnline)
-6. [Secret Management (SOPS)](#sops)
+4. [Running Tests](#running-tests)
+   * [Local Run](#local-run)
+   * [CI/CD Run (GitHub Actions)](#cicd-run-github-actions)
+5.  [Allure Reports](#allure-reports)
+    * [Local Generation](#local-generation)
+    * [Viewing Report Locally](#viewing-report-locally)
+    * [Viewing Online](#viewing-online)
+6.  [Secret Management (SOPS)](#secret-management-sops)
+7. [Further improvements-concerns](#further-improvements-concerns)
 
 ## Features
 
@@ -179,3 +180,10 @@ are securely stored within `src/main/resources/application-dev.enc.yml`. This fi
 * CI/CD Decryption: For automated decryption in GitHub Actions, 
 * the private PGP key (without a passphrase) is securely stored as a [GitHub Secret](https://docs.github.com/en/actions/how-tos/security-for-github-actions/security-guides/using-secrets-in-github-actions) named `SOPS_PGP_KEY`. 
 * This ensures that sensitive information is never exposed directly in your repository.
+
+## Further improvements-concerns
+
+* it's quite difficult to run parallel tests for this application as there's no mechanism for managing actual products
+* some cases can be tested only manually as the defects are mostly related to an element position/overlay
+* some things require clarification (there are a couple of `TODO` in the project)
+* not clear how to validate the pictures - also requires clarification (should the picture scr contain the name of the product?)
