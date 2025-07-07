@@ -53,6 +53,16 @@ jobs:
           SOPS_PGP_KEY: ${{ secrets.SOPS_PGP_KEY }}
         run: ./sops.sh d
 
+      - name: Verify suite/All.xml exists (DEBUG)
+        run: |
+          echo "Listing content of current directory:"
+          ls -la .
+          echo "Listing content of 'suite' directory:"
+          ls -la suite/
+          echo "Checking if suite/All.xml exists:"
+          test -f suite/All.xml && echo "suite/All.xml found!" || echo "ERROR: suite/All.xml NOT found!"
+          pwd
+
       - name: Get Maven Cache Directory
         id: maven-cache-dir
         run: echo "::set-output name=dir::$(mvn help:evaluate -Dexpression=settings.localRepository -q -DforceStdout)"
