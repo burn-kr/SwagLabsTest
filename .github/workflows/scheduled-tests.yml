@@ -53,6 +53,12 @@ jobs:
           SOPS_PGP_KEY: ${{ secrets.SOPS_PGP_KEY }}
         run: ./sops.sh d
 
+      - name: Verify Decrypted File Content (DEBUG)
+        run: |
+          echo "--- Content of src/main/resources/application-dev.yml ---"
+          cat src/main/resources/application-dev.yml
+          echo "---------------------------------------------------------"
+
       - name: Get Maven Cache Directory
         id: maven-cache-dir
         run: echo "::set-output name=dir::$(mvn help:evaluate -Dexpression=settings.localRepository -q -DforceStdout)"
