@@ -70,13 +70,32 @@ fi
 
 if [ "$MODE" = "decrypt" ]; then
     echo "decrypting..."
+    
+    export GNUPGHOME="$(mktemp -d)"
+    echo "GNUPGHOME set to: $GNUPGHOME"
+
+    if [ -z "$SOPS_PGP_KEY" ]; then
+      echo "Error: SOPS_PGP_KEY environment variable is not set. Cannot decrypt."
+      exit 1
+    else
+      echo "Importing PGP key from environment variable..."
+      echo "$SOPS_PGP_KEY" | gpg --batch --import --yes
+      if [ $? -ne 0 ]; then
+        echo "Error: Failed to import PGP key into temporary GNUPGHOME."
+        exit 1
+      fi
+
+      echo "Listing imported PGP keys in temporary GNUPGHOME:"
+      gpg --list-secret-keys --keyid-format LONG
+      echo "Done listing keys."
+    fi
 
     while IFS= read -r -d '' file; do
         file_basename=`basename $file | cut -d. -f1`
         file_decrypted="$file_basename.yml"
 
         echo "decrypting $file to $file_decrypted"
-        sops --decrypt --verbose --input-type yml "$file" > "$file_decrypted"
+        sops --decrypt --verbose --input-type yml "$file" > "$file_decrypted" 2> /dev/null
 
         if [ $? -ne 0 ]; then
             log "Could not decrypt file:$RESTORE $file" $RED
