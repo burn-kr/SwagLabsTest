@@ -148,7 +148,7 @@
 					<properties>
 				            <property>
 				                <name>testnames.output</name>
-				                <value>true</</value>
+				                <value>true</value>
 				            </property>
 				            <property>
 				                <name>surefire.testng.debug</name>
